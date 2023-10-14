@@ -26,6 +26,20 @@ function playRound(getPlayerChoice, getComputerChoice) {
       console.log(`You win! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
     }
   }
+
+  if(getPlayerChoice === 'paper') {
+    if(getComputerChoice === getPlayerChoice) {
+      draws++
+      console.log(`A draw! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
+    } else if(getComputerChoice === 'scissors') {
+      computerWins++
+      console.log(`You lost! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
+    }  else {
+      playerWins++
+      console.log(`You win! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
+    }
+  }
+  return `Score: Player - ${playerWins} | Computer - ${computerWins} | Draws - ${draws}`
 }
 
 console.log(playRound(playerSelection(), getComputerChoice()))
