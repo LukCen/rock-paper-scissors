@@ -8,11 +8,11 @@ function playerSelection(){
   return prompt('What would your selection be?').toLowerCase()
 }
 
+let playerWins = 0;
+let computerWins = 0;
+let draws = 0;
 
 function playRound(getPlayerChoice, getComputerChoice) {
-  let playerWins = 0;
-  let computerWins = 0;
-  let draws = 0;
   
   if(getPlayerChoice === 'rock') {
     if(getComputerChoice === getPlayerChoice) {
@@ -51,7 +51,13 @@ function playRound(getPlayerChoice, getComputerChoice) {
       console.log(`You win! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
     }
   }
-  return `Score: Player - ${playerWins} | Computer - ${computerWins} | Draws - ${draws}`
 }
 
-console.log(playRound(playerSelection(), getComputerChoice()))
+function game(){
+  for(let i = 0; i < 5; i++){
+    playRound(playerSelection(), getComputerChoice())
+  }
+  console.log(`Score: Player - ${playerWins} | Computer - ${computerWins} | Draws - ${draws}`)
+}
+
+game()
