@@ -1,0 +1,1 @@
+Rock-paper-scissors project, based on an assignment by TheOdinProject.
