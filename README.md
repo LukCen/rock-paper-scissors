@@ -3,8 +3,10 @@ Rock-paper-scissors project, based on an assignment by TheOdinProject.
 Resources :
 
 Rock : <https://www.flaticon.com/free-icons/fist> - Fist icons created by Cuputo - Flaticon
+=============================================================================================
 Paper : <https://www.flaticon.com/free-icon/hand-paper_12355903> - Rock paper scissors icons created by iconading - Flaticon
-Scissors: <https://www.flaticon.com/free-icons/scissors">- Scissors icons created by Cap Cool - Flaticon
+=============================================================================================
+Scissors : <https://www.flaticon.com/free-icons/scissors"> - Scissors icons created by Cap Cool - Flaticon
 
 Favicon : 
 

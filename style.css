@@ -1,3 +1,48 @@
+* {
+  font-family: 'Roboto', sans-se;
+  margin: 0;
+  padding: 0;
+  color: whitesmoke;
+}
+
 body {
   background-color: rgb(70, 66, 66);
+}
+
+.game-screen {
+  height: 100%;
+  border: 1px solid white;
+  display: grid;
+}
+
+.scoreboard {
+  height: 150px;
+  border: 1px solid pink;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+}
+
+.scoreboard-element {
+  border: 2px solid skyblue;
+  border-radius: 5px;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.controls {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(3, auto);
+  gap: 100px;
+  padding: 10px;
+}
+
+button {
+  background-color: lightgrey;
+  border: 6px solid black;
+  border-radius: 10px;
+  cursor: pointer;
 }
