@@ -41,8 +41,14 @@ body {
 }
 
 button {
+  transform: scale(.75);
   background-color: lightgrey;
   border: 6px solid black;
   border-radius: 10px;
   cursor: pointer;
+  transition: transform .35s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.0);
 }
