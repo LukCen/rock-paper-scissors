@@ -3,129 +3,79 @@ const btnRock = document.querySelector('.select-rock')
 const btnPaper = document.querySelector('.select-paper')
 const btnScissors = document.querySelector('.select-scissors')
 
-function handleScore(){
-  let playerWins = 0;
-  let computerWins = 0;
-  let draws = 0;
+function handleScore () {
+  let playerWins = 0
+  let computerWins = 0
+  let draws = 0
 
-  function playerVictory(){
+  function playerVictory () {
     playerWins++
-    console.log('PLAYER WON')
   }
-  function computerVictory(){
+  function computerVictory () {
     computerWins++
-    console.log('COMPUTER WON')
   }
-  function draw(){
+  function draw () {
     draws++
-    console.log('DRAW')
   }
-  return {playerWins, computerWins, draws, playerVictory, computerVictory, draw} // need this to access those outside of this function, because scope
+  return { playerWins, computerWins, draws, playerVictory, computerVictory, draw } // need this to access those outside of this function, because scope
 }
 
-function getComputerChoice(){
+function getComputerChoice () {
   const choices = ['rock', 'paper', 'scissors']
-  let randomIndex = Math.floor(Math.random() * 3)
-  console.log(choices[randomIndex])
+  const randomIndex = Math.floor(Math.random() * 3)
   return choices[randomIndex]
 }
 
-function getPlayerChoice(){
-  let playerChoice = null;
+function getPlayerChoice (callback) {
+  let playerChoice = null
   btnRock.addEventListener('click', () => {
     playerChoice = 'rock'
-    console.log(playerChoice)
-    return playerChoice
+    callback(playerChoice)
   })
   btnPaper.addEventListener('click', () => {
     playerChoice = 'paper'
-    console.log(playerChoice)
-    return playerChoice
+    callback(playerChoice)
   })
   btnScissors.addEventListener('click', () => {
     playerChoice = 'scissors'
-    console.log(playerChoice)
-    return playerChoice
+    callback(playerChoice)
   })
-
-  return {playerChoice}
 }
 
-function playGame() {
-  let trackScore = handleScore()
-  let player = getComputerChoice()
-  let pc = getPlayerChoice()
+function playGame () {
+  getComputerChoice()
 
-  if(player === 'rock') {
-    if (pc === player) {
-      trackScore.draw()
-    } else if (pc === 'paper') {
-      trackScore.computerVictory()
-    } else if (pc === 'scissors'){
-      trackScore.playerVictory()
+  getPlayerChoice((player) => {
+    if (player === 'rock') {
+      if (getComputerChoice() === player) {
+        handleScore().draw()
+      } else if (getComputerChoice() === 'paper') {
+        handleScore().computerVictory()
+      } else {
+        handleScore().playerVictory()
+      }
     }
-  }
-  return trackScore
+
+    if (player === 'paper') {
+      if (getComputerChoice() === player) {
+        handleScore().draw()
+      } else if (getComputerChoice() === 'scissors') {
+        handleScore().computerVictory()
+      } else {
+        handleScore().playerVictory()
+      }
+    }
+
+    if (player === 'scissors') {
+      if (getComputerChoice() === player) {
+        handleScore().draw()
+      } else if (getComputerChoice() === 'rock') {
+        handleScore().computerVictory()
+      } else {
+        handleScore().playerVictory()
+      }
+    }
+  })
 }
 
 playGame()
-
-
-
-// function playerSelection(){
-//   return prompt('What would your selection be?').toLowerCase()
-// }
-
-// let playerWins = 0;
-// let computerWins = 0;
-// let draws = 0;
-
-// function playRound(getPlayerChoice, getComputerChoice) {
-  
-//   if(getPlayerChoice === 'rock') {
-//     if(getComputerChoice === getPlayerChoice) {
-//       draws++
-//       console.log(`A draw! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     } else if (getComputerChoice === 'paper') {
-//       computerWins++
-//       console.log(`You lost! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     } else {
-//       playerWins++
-//       console.log(`You win! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     }
-//   }
-
-//   if(getPlayerChoice === 'paper') {
-//     if(getComputerChoice === getPlayerChoice) {
-//       draws++
-//       console.log(`A draw! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     } else if(getComputerChoice === 'scissors') {
-//       computerWins++
-//       console.log(`You lost! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     }  else {
-//       playerWins++
-//       console.log(`You win! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     }
-//   }
-//   if(getPlayerChoice === 'scissors') {
-//     if(getComputerChoice === getPlayerChoice) {
-//       draws++
-//       console.log(`A draw! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     } else if(getComputerChoice === 'rock') {
-//       computerWins++
-//       console.log(`You lost! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     }  else {
-//       playerWins++
-//       console.log(`You win! You picked ${getPlayerChoice}, the computer picked ${getComputerChoice}`)
-//     }
-//   }
-// }
-
-// function game(){
-//   for(let i = 0; i < 5; i++){
-//     playRound(playerSelection(), getComputerChoice())
-//   }
-//   console.log(`Score: Player - ${playerWins} | Computer - ${computerWins} | Draws - ${draws}`)
-// }
-
-// game()
