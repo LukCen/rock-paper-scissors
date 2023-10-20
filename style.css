@@ -19,8 +19,9 @@ body {
   height: 150px;
   border: 1px solid pink;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(3, 4fr);
   gap: 10px;
+  justify-content: center;
 }
 
 .scoreboard-element {
