@@ -47,6 +47,18 @@ function getPlayerChoice (callback) {
   })
 }
 
+// this is kinda lazy solution but it does what it needs to
+function victoryPrompt (victor) {
+  if (confirm) {
+    playerWins = 0
+    computerWins = 0
+    draws = 0
+    scorePlayer.innerText = `Player : ${playerWins}`
+    scoreComputer.innerText = `Computer : ${computerWins}`
+    scoreDraw.innerText = `Draws : ${draws}`
+  }
+  return confirm(`${victor} has won! Press 'OK' to play again!`)
+}
 function playGame () {
   getComputerChoice()
 
@@ -60,7 +72,7 @@ function playGame () {
         scoreComputer.innerText = `Computer : ${handleScore().computerWins}`
       } else {
         handleScore().playerVictory()
-        scorePlayer.innerText = `Computer : ${handleScore().playerWins}`
+        scorePlayer.innerText = `Player : ${handleScore().playerWins}`
       }
     }
 
@@ -88,6 +100,15 @@ function playGame () {
         handleScore().playerVictory()
         scorePlayer.innerText = `Player : ${handleScore().playerWins}`
       }
+    }
+    if (handleScore().playerWins === 5) {
+      victoryPrompt('Player')
+    }
+    if (handleScore().computerWins === 5) {
+      victoryPrompt('Computer')
+    }
+    if (handleScore().draws === 5) {
+      victoryPrompt('Nobody')
     }
   })
 }
